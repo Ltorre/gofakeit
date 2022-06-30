@@ -21,6 +21,11 @@ func imageURL(r *rand.Rand, width int, height int) string {
 	return "https://picsum.photos/" + strconv.Itoa(width) + "/" + strconv.Itoa(height)
 }
 
+// ProfilePictureURL will return a generated face profile picture url
+func ProfilePictureURL() string {
+	return "https://thispersondoesnotexist.com/image"
+}
+
 // Image generates a random rgba image
 func Image(width int, height int) *img.RGBA { return image(globalFaker.Rand, width, height) }
 
@@ -96,6 +101,17 @@ func addImageLookup() {
 			}
 
 			return imageURL(r, width, height), nil
+		},
+	})
+
+	AddFuncLookup("ProfilePictureURL", Info{
+		Display:     "Profile Picture URL",
+		Category:    "image",
+		Description: "Random profile picture url",
+		Example:     "",
+		Output:      "string",
+		Generate: func(r *rand.Rand, m *MapParams, info *Info) (interface{}, error) {
+			return ProfilePictureURL(), nil
 		},
 	})
 

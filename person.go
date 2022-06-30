@@ -33,7 +33,7 @@ func person(r *rand.Rand) *PersonInfo {
 		LastName:   lastName(r),
 		Gender:     gender(r),
 		SSN:        ssn(r),
-		Image:      imageURL(r, number(r, 100, 500), number(r, 100, 500)),
+		Image:      ProfilePictureURL(),
 		Hobby:      hobby(r),
 		Job:        job(r),
 		Address:    address(r),
